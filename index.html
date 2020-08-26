@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<title>Change.Q - Character recognition！</title>
+	<link rel="icon" href="favicon.ico" type="image/ico">
+    <link href="main.css" rel="stylesheet"/>
+</head>
+<body>
+    <div class="wrap">
+		<h1 class="h1">Change.Q</h1>
+        <div class="inputc">上传图片
+            <input type="file" name="imagefile" onchange="uploadImage(event)" style="opacity: 0;">
+        </div>
+        <div class="type-wrap">
+            <div id="typed-strings">
+                <span class="text">请上传图片哦！</span>
+            </div>
+		</div>
+		
+		<div class="ImageUrl">
+			<div class="imgShow">
+				<img id="UPimg" src="" alt="乔越博客">
+			</div>
+			<div class="urlList">
+				
+				<div class="okURL">
+					URL：<span class="textURL">https://www.79bk.cn</span>
+				</div>
+				<!-- <div class="okHTML">
+					HTMl：<span>http://www.baidu.com</span>
+				</div>
+				<div class="okMD">
+					Markdown：<span>http://www.baidu.com</span>
+				</div> -->
+			</div>
+		</div>
+
+    </div>
+
+    <script>
+    	function uploadImage(event){
+    		
+    		// console.log(event);
+    		// 获取图片信息
+    		var image = event.target.files[0];
+    		//创建表单
+    		var formData = new FormData();
+    		//将文件添加进去
+			formData.append("imageFile", image);
+			//创建请求
+			var xhr = new XMLHttpRequest();
+			//打开连接
+			xhr.open("post", "myOcr.php");
+    		//发送数据
+			xhr.send(formData);
+ 
+    		xhr.onreadystatechange = function () {//请求后的回调接口，可将请求成功后要执行的程序写在其中
+			    if (xhr.readyState == 4 && xhr.status == 200) {//验证请求是否发送成功
+			        var json = xhr.responseText;//获取到服务端返回的数据
+			        // console.log(json);
+			        show(json)
+			        addImageUrl(json)
+			    }
+			}
+			
+    	}
+    	
+    	function show(json) {
+			var data = JSON.parse(json)
+			var res = data["words_result"]
+	        var str = ''
+			var clipText = ''
+			for (var i = 0;i<res.length;i++) {
+				str += res[i]['words'] + "<br/>"
+				clipText += res[i]['words']
+			}
+			
+			document.getElementsByClassName("text")[0].innerHTML = str
+		}
+		//把图片显示出来
+		function addImageUrl(json){
+			var data = JSON.parse(json)
+			//找出后缀
+			var res = data["imageUrl"]
+			var URL = window.location.href+res
+			document.getElementById('UPimg').src = URL;
+			document.getElementsByClassName("textURL")[0].innerHTML = URL
+			document.getElementsByClassName("ImageUrl")[0].style.opacity = 1
+			
+			
+			
+		}
+
+    </script>
+</body>
+</html>

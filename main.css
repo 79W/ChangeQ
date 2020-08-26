@@ -1,0 +1,113 @@
+@import url(http://fonts.googleapis.com/css?family=Ubuntu:400,500);
+
+*{
+	padding:0;
+	margin:0;
+}
+
+body{
+	font-family: "Ubuntu", sans-serif;
+	font-size: 100%;
+	background:#f8f8f8;
+}
+
+a{
+	text-decoration: none;
+	color:#666;
+}
+	a:hover{
+		color:#999;
+	}
+p{
+	line-height: 2em;
+	margin:0 0 20px;
+	text-align: center;
+}
+
+.wrap{
+	max-width: 600px;
+	margin:150px auto;
+}
+
+.type-wrap{
+	margin:10px auto;
+	padding:20px;
+	background:#f0f0f0;
+	border-radius:5px;
+	border:#CCC 1px solid;
+}
+
+.links{
+	margin:20px 0;
+	font-size: 0.75em;
+	text-align: center;
+}
+h1{
+	display: inline-block;
+}
+input{
+	width: 70px;
+	height: 25px;
+	position: relative;
+	top: -26px;
+
+
+}
+.inputc{
+	width: 70px;
+	height: 25px;
+	float: right;
+	margin-top:10px;
+	cursor:pointer;
+	border:1px solid rgb(168, 170, 168);
+	text-align: center;
+	font-size: 15px;
+	line-height: 25px;
+	border-radius:4px;
+	color: rgb(70, 70, 70);
+
+}
+.inputc:hover{
+	background: #333435;
+	border:1px solid #333435;
+	color: white;
+}
+
+
+
+.ImageUrl{
+	margin:10px auto;
+	padding:20px;
+	background:#f0f0f0;
+	border-radius:3px;
+	border:#CCC 1px solid;
+	opacity: 0;
+}
+.imgShow{
+	text-align: center;
+	padding-bottom: 20px;
+}
+.imgShow img{
+	max-width: 88%;
+	height: auto;
+}
+.urlList{
+	padding-bottom:15px ;
+	/* background:blue; */
+	/* display: inline-block; */
+	
+}
+.urlList .okURL,.okHTML,.okMD{
+	margin: 0 auto ;
+	width: 88%;
+	height:40px;
+	border:#CCC 1px solid;
+	margin-top:10px;
+	color: rgb(124, 124, 124);
+	line-height: 40px;
+	padding-left:10px ;
+	border-radius:3px;
+	overflow:hidden; 
+	text-overflow:ellipsis; 
+	white-space:nowrap; 
+}
